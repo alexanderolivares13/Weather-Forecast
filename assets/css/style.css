@@ -23,6 +23,19 @@
     border-style: none;
 }
 
+.search-card {
+    position: relative;
+    left: 10%;
+    min-width: 40%;
+}
+
+.search-container button {
+    border-radius: 8px;
+    color: var(--white);
+    background-color: var(--cadet);
+
+}
+
 .featured-card {
     border-style: none;
     border-radius: 0px;
