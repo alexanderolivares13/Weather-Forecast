@@ -1,0 +1,38 @@
+:root {
+    --cadet:  #5f9ea0;
+    --white: #fff;
+}
+
+.header {
+    background-color: var(--cadet);
+    text-align: center;
+    font-size: 2.0rem;
+    color: var(--white);
+}
+
+.search-card, .city-card{
+    margin-top: 10px;
+}
+
+.city-card {
+    border-color: black;
+    border-radius: 0;
+}
+
+.search-card, .forecast-card {
+    border-style: none;
+}
+
+.featured-card {
+    border-style: none;
+    border-radius: 0px;
+    border-top: solid 2px;
+}
+
+.featured-city{
+    width: 100%;
+    margin: 2% 0;
+    border-radius: 8px;
+    background-color: var(--cadet);
+    color: var(--white);
+}
