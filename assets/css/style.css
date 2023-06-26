@@ -21,6 +21,7 @@
 
 .search-card, .forecast-card {
     border-style: none;
+    margin: 0 1%;
 }
 
 .search-card {
@@ -29,7 +30,7 @@
     min-width: 40%;
 }
 
-.search-container button {
+.btn-main {
     border-radius: 8px;
     color: var(--white);
     background-color: var(--cadet);
@@ -42,7 +43,7 @@
     border-top: solid 2px;
 }
 
-.featured-city{
+.featured-city-btn{
     width: 100%;
     margin: 2% 0;
     border-radius: 8px;

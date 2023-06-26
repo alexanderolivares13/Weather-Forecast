@@ -1,60 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Forecast</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Forecast</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
+
 <body>
-    <header class="header">Weather Dashboard</header>
-    <div class="row">
-        <div class="col-sm-6 col-lg-3">
-          <div class="card search-card">
-            <div class="card-body search-container">
-              <h5 class="card-title">Search for a City:</h5>
-              <input type="search" class="card-input" placeholder="Los Angeles"></input>
-              <button id="#search" class="btn-main">Search</button>
-            </div>
-          </div>
+  <header class="header">Weather Dashboard</header>
+  <div class="row">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card search-card">
+        <div class="card-body search-container">
+          <h5 class="card-title">Search for a City:</h5>
+          <form class="search-form" id="search-form">
+            <input type="search" class="search-input" placeholder="Los Angeles">
+            <input type="submit" id="#search-btn" class="btn-main" value="Search">
+          </form>
         </div>
-        <div class="col-sm-6 col-lg-8">
-          <div class="card city-card">
-            <div class="card-body city-container">
-              <h5 class="card-title">Searched City</h5>
-            </div>
-          </div>
-        </div>
+      </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6 col-lg-3">
-            <div class="card featured-card">
-                <div class="card-body featured-card-body">
-                        <button class="featured-city">Los Angeles</button>
-                        <button class="featured-city">Atlanta</button>
-                        <button class="featured-city">Chicago</button>
-                        <button class="featured-city">Austin</button>
-                        <button class="featured-city">Las Vegas</button>
-                        <button class="featured-city">Seattle</button>
-                        <button class="featured-city">New York</button>
-                </div>
-            </div>
+    <div class="col-sm-6 col-lg-8">
+      <div class="card city-card">
+        <div class="card-body city-container">
+          <h5 class="card-title">Searched City:</h5>
         </div>
-        <div class="col-sm-6 col-lg-9">
-          <div class="card forecast-card">
-            <div class="card-body forecast-contaner">
-              <h5 class="card-title">5 Day Forecast:</h5>
-            </div>
-          </div>
-        </div>
+      </div>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card featured-card">
+        <div class="card-body featured-card-body">
+          <button class="featured-city-btn" value="los+angeles,us">Los Angeles</button>
+          <button class="featured-city-btn" value="atlanta,us">Atlanta</button>
+          <button class="featured-city-btn" value="chicago,us">Chicago</button>
+          <button class="featured-city-btn" value="austin,us">Austin</button>
+          <button class="featured-city-btn" value="las+vegas,us">Las Vegas</button>
+          <button class="featured-city-btn" value="seattle,us">Seattle</button>
+          <button class="featured-city-btn" value="new+york,us">New York</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-lg-2">
+      <div class="card forecast-card">
+        <div class="card-body forecast-container">
+          <h5 class="card-title">5 Day Forecast:</h5>
+        </div>  
+      </div>
+    </div>
+    <div class="card forecast-card col-sm-6 col-lg-1">
+      <div class="card-body forecast-day1">
+        <h5 class="card-title">Day1</h5>
+      </div> 
+    </div>
+    <div class="card forecast-card col-sm-6 col-lg-1">
+      <div class="card-body forecast-day2">
+        <h5 class="card-title">Day 2</h5>
+      </div> 
+    </div>
+    <div class="card forecast-card col-sm-6 col-lg-1">
+      <div class="card-body forecast-day3">
+        <h5 class="card-title">Day 3</h5>
+      </div> 
+    </div>
+    <div class="card forecast-card col-sm-6 col-lg-1">
+      <div class="card-body forecast-day4">
+        <h5 class="card-title">Day 4</h5>
+      </div> 
+    </div>
+    <div class="card forecast-card col-sm-6 col-lg-1">
+      <div class="card-body forecast-day5">
+        <h5 class="card-title">Day 5</h5>
+      </div> 
+    </div>
+  </div>
 </body>
-<script
-  src="https://code.jquery.com/jquery-3.7.0.min.js"
-  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"
+  integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="assets/js/script.js"></script>
+
 </html>
