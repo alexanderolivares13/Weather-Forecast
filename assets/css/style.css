@@ -51,7 +51,9 @@
     color: var(--white);
 }
 
-
+.forecast-day {
+    padding-left: 10px;
+}
 
 .forecast-card {
     background-color: rgb(0, 0, 55);
@@ -61,5 +63,5 @@
 }
 
 .forecast-title {
-    margin: 20% 0;
+    margin: 5% 0;
 }
