@@ -1,5 +1,5 @@
 var searchButton = $(".btn-main");
-var featuredButton = $(".featured-city-btn");
+var featuredButton = $(".featured-card-body");
 var userValue = "";
 
 var fetchCurrentWeather = function (userValue) {
@@ -11,6 +11,10 @@ var fetchCurrentWeather = function (userValue) {
     .then(function (response) {
       if (response.status === 200) {
         fetch5dayWeather(userValue);
+        localStorage.setItem("city", userValue);
+      } else if (response.status !== 200) {
+        alert("Please enter a valid City");
+        return;
       }
       return response.json();
     })
@@ -30,11 +34,14 @@ var fetch5dayWeather = function (userValue) {
     })
     .then(function (weeklyData) {
       localStorage.setItem("weeklyWeather", JSON.stringify(weeklyData));
-      location.reload();
+      writeForecast();
+      generateButton();
+      $(".search-input").val("");
+      // location.reload();
     });
 };
 
-var writeForecast = function () {
+const writeForecast = function () {
   now = dayjs().format("YYYY-MM-DD");
   let currentWeather = JSON.parse(localStorage.getItem("currentWeather"));
   let weeklyWeather = JSON.parse(localStorage.getItem("weeklyWeather"));
@@ -63,6 +70,7 @@ var writeForecast = function () {
     humidityCreate.setAttribute("class", "forecast-title");
     humidityCreate.textContent =
       "Humidity: " + weeklyWeather.list[i].main.humidity + "%";
+    $("#Day-" + n).empty();
     $("#Day-" + n).append(
       dateCreate,
       icon,
@@ -89,7 +97,7 @@ var writeForecast = function () {
   let humidityCreate = document.createElement("h6");
   humidityCreate.textContent =
     "Humidity: " + currentWeather.main.humidity + "%";
-
+  $(".city-container").empty();
   $(".city-container").append(
     currentCity,
     icon,
@@ -100,22 +108,48 @@ var writeForecast = function () {
   );
 };
 
+const generateButton = function () {
+  userValue = localStorage.getItem("city");
+  buttonCreate = document.createElement("button");
+  buttonCreate.setAttribute("class", "featured-city-btn");
+  buttonCreate.setAttribute("value", userValue);
+  buttonCreate.textContent = userValue.replace("+", " ");
+  $(".featured-card-body").prepend(buttonCreate);
+};
+
+// the event listener for the search bar is set grab the value entered by the user and if the search bar is left blank then the function is killed. if the search bar is not blank then it proceeds to run the functions and try to getch the forecast data.
 searchButton.on("click", function (event) {
   event.preventDefault();
   userValue = $(".search-input").val();
+  if (userValue === ""){
+    return;
+  } else {
   userValue = userValue.toLowerCase();
   userValue = userValue.replace(" ", "+");
   fetchCurrentWeather(userValue);
+}
 });
-featuredButton.on("click", function () {
-  userValue = $(this).val();
-  console.log(userValue);
+// this button uses an event delegator to some bugs that were encountered, the event is being delegated to the parent container of the buttons in the search history, but is set to only listen to clicks on the buttons
+featuredButton.on("click", ".featured-city-btn" ,function (event) {
+  userValue = $(event.target).val();
+  localStorage.setItem("city", userValue);
   fetchCurrentWeather(userValue);
+  if (userValue !== "") {$(event.target).remove();}
 });
+
+// on page load it checks to see if there is any local storage for forecast data, if not then it sets a default city to help prevent having an empty webpage
 
 if (localStorage.getItem("weeklyWeather")) {
   writeForecast();
 } else if (!localStorage.getItem("weeklyWeather")) {
   userValue = "los+angeles";
   fetchCurrentWeather(userValue);
+}
+
+// on page load it checks to see if there is any local storage for the city name, if not then it sets a default city to help prevent having an empty webpage
+if (localStorage.getItem("city")) {
+  generateButton();
+} else if (!localStorage.getItem("city")) {
+  userValue = "los+angeles";
+  localStorage.setItem("city", userValue);
 }
