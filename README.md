@@ -37,3 +37,7 @@
 - DayJS: https://day.js.org
 
 - Bootstrap CSS Framework: https://getbootstrap.com
+
+## License
+
+Please refer to the LICENSE in the repo.
